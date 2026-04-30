@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Highest Quality",
+  "description": "Keeps YouTube videos on the highest available quality with a tiny page-only content script.",
+  "version": "1.0.0",
+  "minimum_chrome_version": "102",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*",
+        "*://*.youtube-nocookie.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    }
+  ]
+}
