@@ -16,6 +16,7 @@
   const settingsAttribute = "data-yt-hq-preferred-quality";
   const speedAttribute = "data-yt-hq-playback-speed";
   const previousSpeedAttribute = "data-yt-hq-previous-playback-speed";
+  const analysisCaptureAttribute = "data-yt-hq-analysis-capture";
   const overlayId = "yt-hq-speed-overlay";
   const styleId = "yt-hq-speed-style";
   const overlayVisibleClass = "yt-hq-speed-overlay-visible";
@@ -204,6 +205,13 @@
   }
 
   function applyPreferredSpeed() {
+    if (
+      document.documentElement &&
+      document.documentElement.getAttribute(analysisCaptureAttribute) === "true"
+    ) {
+      return;
+    }
+
     const video = videoNode || findVideo(playerNode);
     if (!video) {
       return;
@@ -311,6 +319,13 @@
 
   function syncPreferredSpeedFromVideo(video) {
     if (!video) {
+      return;
+    }
+
+    if (
+      document.documentElement &&
+      document.documentElement.getAttribute(analysisCaptureAttribute) === "true"
+    ) {
       return;
     }
 

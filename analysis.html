@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Video Transcript Library</title>
+    <link rel="stylesheet" href="analysis.css">
+  </head>
+  <body>
+    <aside>
+      <header>
+        <h1>Transcript Library</h1>
+        <button id="refresh" type="button">Refresh</button>
+      </header>
+      <div id="analysis-list" class="analysis-list" aria-label="Saved video analyses"></div>
+    </aside>
+
+    <main>
+      <section id="empty-state" class="empty-state">
+        <h2>Select a saved video</h2>
+        <p>Completed analyses will show a plain-English summary, section breakdown, terms, and transcript.</p>
+      </section>
+
+      <article id="detail" class="detail" hidden>
+        <div class="detail-header">
+          <div>
+            <p id="detail-status" class="status-pill"></p>
+            <h2 id="detail-title"></h2>
+            <a id="detail-url" target="_blank" rel="noreferrer"></a>
+          </div>
+          <button id="delete-analysis" class="danger" type="button">Delete</button>
+        </div>
+
+        <section class="summary-block">
+          <h3>Summary</h3>
+          <p id="one-sentence"></p>
+          <p id="full-summary"></p>
+        </section>
+
+        <section>
+          <h3>Key Takeaways</h3>
+          <ul id="takeaways"></ul>
+        </section>
+
+        <section>
+          <h3>Sections</h3>
+          <div id="sections"></div>
+        </section>
+
+        <section>
+          <h3>Terms</h3>
+          <dl id="terms"></dl>
+        </section>
+
+        <section>
+          <h3>Transcript</h3>
+          <pre id="transcript"></pre>
+        </section>
+
+        <section id="error-block" class="error-block" hidden>
+          <h3>Error</h3>
+          <pre id="error"></pre>
+        </section>
+      </article>
+    </main>
+
+    <script src="analysis.js"></script>
+  </body>
+</html>

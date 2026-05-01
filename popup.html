@@ -38,6 +38,30 @@
         <button id="normal-toggle" class="wide-button" type="button">Use 1.00x</button>
       </section>
 
+      <section class="analysis-panel">
+        <div class="label-row">
+          <strong>Transcript summary</strong>
+          <button id="open-library" class="text-button" type="button">Library</button>
+        </div>
+        <label for="api-key">OpenAI API key</label>
+        <input id="api-key" type="password" placeholder="sk-..." autocomplete="off" spellcheck="false">
+        <div class="button-row">
+          <button id="save-api-key" class="wide-button" type="button">Save key</button>
+          <button id="clear-api-key" class="wide-button secondary" type="button">Clear</button>
+        </div>
+        <button id="analyze-video" class="wide-button primary" type="button">Analyze current video</button>
+        <button id="stop-analysis" class="wide-button secondary" type="button">Stop & summarize</button>
+        <p class="hint">Records the video audio in real time at 1x, then stores transcript, summary, and sections locally.</p>
+      </section>
+
+      <section>
+        <div class="label-row">
+          <strong>Recent</strong>
+          <button id="refresh-history" class="text-button" type="button">Refresh</button>
+        </div>
+        <div id="history" class="history" aria-live="polite"></div>
+      </section>
+
       <p id="status" role="status" aria-live="polite"></p>
     </main>
     <script src="popup.js"></script>
