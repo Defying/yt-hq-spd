@@ -309,6 +309,20 @@
     setPreferredSpeed(normalSpeed, true, false);
   }
 
+  function syncPreferredSpeedFromVideo(video) {
+    if (!video) {
+      return;
+    }
+
+    const playbackSpeed = normalizeSpeed(video.playbackRate);
+    if (Math.abs(playbackSpeed - preferredSpeed) < 0.001) {
+      updateSpeedOverlay();
+      return;
+    }
+
+    setPreferredSpeed(playbackSpeed, true);
+  }
+
   function clearSpeedOverlayFade() {
     window.clearTimeout(speedOverlayHideTimer);
   }
@@ -666,14 +680,20 @@
       "play",
       "playing",
       "durationchange",
-      "emptied",
-      "ratechange"
+      "emptied"
     ]) {
       video.addEventListener(eventName, () => scheduleBurst(true), {
         passive: true,
         signal: videoEvents.signal
       });
     }
+
+    video.addEventListener("ratechange", () => {
+      syncPreferredSpeedFromVideo(video);
+    }, {
+      passive: true,
+      signal: videoEvents.signal
+    });
 
     video.addEventListener("resize", () => scheduleBurst(), {
       passive: true,

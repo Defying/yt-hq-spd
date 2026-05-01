@@ -17,6 +17,7 @@ A tiny unpacked Chrome extension that keeps YouTube videos on your preferred qua
 - Adds a compact hover overlay in the top-right of the video for 0.05x speed steps and a speed slider.
 - Includes both quality and speed controls in the pinned extension popup.
 - Adds a one-shot `1x` toggle that remembers and restores your last non-normal speed.
+- Syncs speed changes made with YouTube's own player controls back into the extension settings.
 - Saves your preferred quality and playback speed in Chrome sync storage.
 - Applies quality in short bursts around navigation/video-load events, then checks every 12 seconds.
 - Has no background service worker, analytics, network calls, or dependencies.

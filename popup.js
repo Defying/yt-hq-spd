@@ -135,6 +135,31 @@
     }
   });
 
+  chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName !== "sync") {
+      return;
+    }
+
+    if (changes[qualityStorageKey]) {
+      qualitySelect.value = changes[qualityStorageKey].newValue || defaultQuality;
+    }
+
+    if (changes[previousSpeedStorageKey]) {
+      previousSpeed = normalizeSpeed(changes[previousSpeedStorageKey].newValue);
+    }
+
+    if (changes[speedStorageKey]) {
+      setSpeed(changes[speedStorageKey].newValue, false, false);
+
+      if (!isNormalSpeed(currentSpeed) && !changes[previousSpeedStorageKey]) {
+        rememberSpeed(currentSpeed);
+        updateSpeedControls();
+      }
+    } else if (changes[previousSpeedStorageKey]) {
+      updateSpeedControls();
+    }
+  });
+
   qualitySelect.addEventListener("change", () => {
     chrome.storage.sync.set({ [qualityStorageKey]: qualitySelect.value }, () => {
       setStatus("Saved");
