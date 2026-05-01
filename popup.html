@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YouTube Quality</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <section>
+        <label for="quality">Quality</label>
+        <select id="quality" autofocus>
+          <option value="highest">Highest available</option>
+          <option value="hd4320">8K</option>
+          <option value="hd2880">5K</option>
+          <option value="hd2160">4K</option>
+          <option value="hd1440">1440p</option>
+          <option value="hd1080">1080p</option>
+          <option value="hd720">720p</option>
+          <option value="large">480p</option>
+          <option value="medium">360p</option>
+          <option value="small">240p</option>
+          <option value="tiny">144p</option>
+        </select>
+      </section>
+
+      <section>
+        <div class="label-row">
+          <label for="speed">Speed</label>
+          <output id="speed-value" for="speed">1.00x</output>
+        </div>
+        <div class="speed-controls">
+          <button id="slower" type="button" title="Slower" aria-label="Decrease speed by 0.05x">-</button>
+          <input id="speed" type="range" min="0.25" max="4" step="0.05" aria-label="Playback speed">
+          <button id="faster" type="button" title="Faster" aria-label="Increase speed by 0.05x">+</button>
+        </div>
+        <button id="normal-toggle" class="wide-button" type="button">Use 1.00x</button>
+      </section>
+
+      <p id="status" role="status" aria-live="polite"></p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

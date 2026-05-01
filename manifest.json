@@ -1,10 +1,28 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Highest Quality",
-  "description": "Keeps YouTube videos on the highest available quality with a tiny page-only content script.",
-  "version": "1.0.0",
+  "name": "YouTube Quality Keeper",
+  "description": "Keeps YouTube videos on your preferred quality and playback speed.",
+  "version": "1.2.0",
   "minimum_chrome_version": "102",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_title": "YouTube Quality",
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*",
+        "*://*.youtube-nocookie.com/*"
+      ],
+      "js": [
+        "settings-bridge.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    },
     {
       "matches": [
         "*://*.youtube.com/*",
